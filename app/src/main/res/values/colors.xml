@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black_kheloyar">#010203</color>
+    <color name="white_kheloyar">#FBFCFC</color>
+
+    <color name="kheloyar_splash_text_color">#FFDF02</color>
+    <color name="kheloyar_transparent">#00FFDF02</color>
+
+    <color name="kheloyar_primary">#0C002A</color>
+
+</resources>

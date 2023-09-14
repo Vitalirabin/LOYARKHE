@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/kheloyar_splash_background">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/kheloyar_splach_foreground">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/kheloyar_menu_back"
+            android:gravity="top|center_horizontal"
+            android:orientation="vertical">
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/FontGravityTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/kheloyar_menu_margin_top"
+                android:text="@string/options_kheloyar"
+                android:textAllCaps="true"
+                android:textColor="@color/kheloyar_splash_text_color"
+                android:textSize="@dimen/kheloyar_splash_text_size" />
+
+            <ImageButton
+                android:id="@+id/kheloyar_sound_button"
+                android:layout_width="@dimen/kheloyar_options_buttons_size"
+                android:layout_height="@dimen/kheloyar_options_buttons_size"
+                android:layout_marginTop="@dimen/kheloyar_sound_margin_top"
+                android:backgroundTint="@color/kheloyar_transparent"
+                android:src="@drawable/sound_options_button_vector_kheloyar" />
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/FontGravityTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/kheloyar_text_margin_top"
+                android:text="@string/sound_kheloyar"
+                android:textAllCaps="true"
+                android:textColor="@color/white_kheloyar"
+                android:textSize="@dimen/kheloyar_menu_text_size" />
+
+            <ImageButton
+                android:id="@+id/kheloyar_music_button"
+                android:layout_width="@dimen/kheloyar_options_buttons_size"
+                android:layout_height="@dimen/kheloyar_options_buttons_size"
+                android:layout_marginTop="@dimen/kheloyar_music_margin_top"
+                android:backgroundTint="@color/kheloyar_transparent"
+                android:src="@drawable/music_kheloyar_vector" />
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/FontGravityTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/kheloyar_text_margin_top"
+                android:text="@string/music_kheloyar"
+                android:textAllCaps="true"
+                android:textColor="@color/white_kheloyar"
+                android:textSize="@dimen/kheloyar_menu_text_size" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/kheloyar_back_button"
+                style="@style/BackSpinButtonsStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/kheloyar_back_margin_top"
+                android:text="@string/back_kheloyar" />
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/kheloyar_cross_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="@dimen/kheloyar_cross_margin_top"
+            android:layout_marginEnd="@dimen/kheloyar_cross_margin_end"
+            android:backgroundTint="@color/kheloyar_transparent"
+            android:src="@drawable/cross_kheloyar_vecror" />
+    </FrameLayout>
+
+</FrameLayout>

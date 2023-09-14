@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/kheloyar_splash_background">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/kheloyar_splach_foreground">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/kheloyar_menu_back"
+            android:gravity="top|center_horizontal"
+            android:orientation="vertical">
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/FontGravityTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/kheloyar_menu_margin_top"
+                android:text="@string/menu_kheloyar"
+                android:textAllCaps="true"
+                android:textColor="@color/kheloyar_splash_text_color"
+                android:textSize="@dimen/kheloyar_splash_text_size" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/kheloyar_play_button"
+                style="@style/MenuItemTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/kheloyar_menu_start_margin_top"
+                android:background="@drawable/kheloyar_menu_button_background"
+                android:text="@string/play_kheloyar"
+                android:textColor="@color/kheloyar_splash_text_color" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/kheloyar_options_button"
+                style="@style/MenuItemTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/kheloyar_menu_option_margin_top"
+                android:background="@drawable/kheloyar_menu_button_background"
+                android:text="@string/options_kheloyar"
+                android:textColor="@color/kheloyar_splash_text_color" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/kheloyar_exit_button"
+                style="@style/MenuItemTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/kheloyar_menu_exit_margin_top"
+                android:background="@drawable/exit_menu_button_background"
+                android:text="@string/exit_kheloyar"
+                android:textColor="@color/kheloyar_splash_text_color" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:src="@drawable/menu_money_bottom" />
+    </FrameLayout>
+
+</FrameLayout>

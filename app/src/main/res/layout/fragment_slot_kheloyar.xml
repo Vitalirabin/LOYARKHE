@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/kheloyar_splash_background">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/kheloyar_splach_foreground">
+
+        <ImageButton
+            android:id="@+id/kheloyar_cross_slot_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/kheloyar_cross_margin_top"
+            android:layout_marginEnd="@dimen/kheloyar_cross_margin_end"
+            android:backgroundTint="@color/kheloyar_transparent"
+            android:src="@drawable/cross_kheloyar_vecror"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/kheloyar_menu_slot_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/kheloyar_cross_margin_end"
+            android:layout_marginTop="@dimen/kheloyar_cross_margin_top"
+            android:backgroundTint="@color/kheloyar_transparent"
+            android:src="@drawable/menu_slot_vector_kheloyar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/slot_kheloyar_recycle_view_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/kheloyar_slot_recycler_container_margin_top"
+            android:background="@drawable/recycle_back_kheloyr_slot_game"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/kheloyar_menu_slot_button">
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/slot_kheloyar_recycle_view_first"
+                android:layout_width="@dimen/kheloyar_slot_recycler_width"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/kheloyar_slot_recycler_first_margin_start"
+                android:layout_marginTop="@dimen/kheloyar_slot_recycler_margin_top"
+                android:layout_marginBottom="@dimen/kheloyar_slot_recycler_margin_bottom" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/slot_kheloyar_recycle_view_second"
+                android:layout_width="@dimen/kheloyar_slot_recycler_width"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/kheloyar_slot_recycler_margin_start"
+                android:layout_marginTop="@dimen/kheloyar_slot_recycler_margin_top"
+                android:layout_marginBottom="@dimen/kheloyar_slot_recycler_margin_bottom" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/slot_kheloyar_recycle_view_third"
+                android:layout_width="@dimen/kheloyar_slot_recycler_width"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/kheloyar_slot_recycler_margin_start"
+                android:layout_marginTop="@dimen/kheloyar_slot_recycler_margin_top"
+                android:layout_marginEnd="@dimen/kheloyar_slot_recycler_third_margin_end"
+                android:layout_marginBottom="@dimen/kheloyar_slot_recycler_margin_bottom" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutkheloyar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/kheloyar_coins_margin_top"
+            android:layout_marginEnd="@dimen/kheloyar_coins_margin_end"
+            android:background="@drawable/bet_background_kheloyar"
+            android:gravity="start"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/linearLayout2kheloyar"
+            app:layout_constraintTop_toBottomOf="@+id/slot_kheloyar_recycle_view_container">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="11dp"
+                app:srcCompat="@drawable/dollar_kheloyar" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/bet_kheloyar_text"
+                style="@style/SlotTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="40" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout2kheloyar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/kheloyar_coins_margin_end"
+            android:background="@drawable/coins_container_background_kheloyar"
+            android:gravity="start"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toStartOf="@+id/linearLayoutkheloyar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/linearLayoutkheloyar">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="11dp"
+                app:srcCompat="@drawable/wallet_icon_slot_coins" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/coins_kheloyar_text"
+                style="@style/SlotTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="40" />
+        </LinearLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/kheloyar_spin_button"
+            style="@style/BackSpinButtonsStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/spin_kheloyar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/plus_button_kheloyar"
+            app:layout_constraintStart_toEndOf="@+id/minus_button_kheloyar"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2kheloyar"
+            app:layout_constraintVertical_bias="0.16666666667" />
+
+        <ImageButton
+            android:id="@+id/minus_button_kheloyar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/kheloyar_transparent"
+            app:layout_constraintBottom_toBottomOf="@+id/kheloyar_spin_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/kheloyar_spin_button"
+            app:srcCompat="@drawable/minus_icon_slot_kheloyar_vector" />
+
+        <ImageButton
+            android:id="@+id/plus_button_kheloyar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/kheloyar_transparent"
+            app:layout_constraintBottom_toBottomOf="@+id/kheloyar_spin_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/kheloyar_spin_button"
+            app:srcCompat="@drawable/plus_icon_kheloyar_vector" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

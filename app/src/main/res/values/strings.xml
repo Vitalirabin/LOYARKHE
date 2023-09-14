@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">KHELOYAR</string>
+
+    <string name="loading">Loading...</string>
+    <string name="play_kheloyar">Play</string>
+    <string name="options_kheloyar">Options</string>
+    <string name="exit_kheloyar">Exit</string>
+    <string name="menu_kheloyar">Menu</string>
+    <string name="sound_kheloyar">Sound</string>
+    <string name="music_kheloyar">music</string>
+    <string name="back_kheloyar">Back</string>
+    <string name="spin_kheloyar">Spin</string>
+    <string name="minimun_biud_kheloyar">Minimum bid reached!</string>
+    <string name="not_enought_coins_kheloyar">Not enought coins!</string>
+    <string name="ran_out_of_coins_kheloyar">Ran out of coins!</string>
+</resources>

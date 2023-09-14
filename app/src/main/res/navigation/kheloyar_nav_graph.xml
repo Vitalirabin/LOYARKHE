@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/kheloyar_nav_graph"
+    app:startDestination="@id/splashKheloyarFragment">
+
+    <fragment
+        android:id="@+id/splashKheloyarFragment"
+        android:name="com.kheloyar.livegame.presentation.loading.LoadingKheloyarFragment"
+        android:label="SplashKheloyarFragment" >
+        <action
+            android:id="@+id/action_splashKheloyarFragment_to_kheloyarFragment"
+            app:destination="@id/kheloyarFragment" />
+        <action
+            android:id="@+id/action_splashKheloyarFragment_to_startKheloyarGameFragment"
+            app:destination="@id/startKheloyarGameFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/kheloyarFragment"
+        android:name="com.kheloyar.livegame.presentation.KheloyarFragment"
+        android:label="KheloyarFragment" />
+    <fragment
+        android:id="@+id/startKheloyarGameFragment"
+        android:name="com.kheloyar.livegame.presentation.menu.MenuKheloyarGameFragment"
+        android:label="StartKheloyarGameFragment" >
+        <action
+            android:id="@+id/action_startKheloyarGameFragment_to_gameKheloyarFragment"
+            app:destination="@id/gameKheloyarFragment" />
+        <action
+            android:id="@+id/action_startKheloyarGameFragment_to_optionsKheloyarFragment"
+            app:destination="@id/optionsKheloyarFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameKheloyarFragment"
+        android:name="com.kheloyar.livegame.presentation.game.GameKheloyarFragment"
+        android:label="GameKheloyarFragment" />
+    <fragment
+        android:id="@+id/optionsKheloyarFragment"
+        android:name="com.kheloyar.livegame.presentation.options.OptionsKheloyarFragment"
+        android:label="OptionsKheloyarFragment" />
+</navigation>

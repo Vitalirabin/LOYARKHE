@@ -1,0 +1,81 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48">
+  <path
+      android:pathData="M24.142,2.556C36.071,2.556 45.728,12.213 45.728,24.142C45.728,36.071 36.071,45.728 24.142,45.728C12.213,45.728 2.556,36.071 2.556,24.142C2.556,12.213 12.213,2.556 24.142,2.556Z"
+      android:fillColor="#0C2738"
+      android:fillType="evenOdd"/>
+  <path
+      android:pathData="M24.142,2.556C36.071,2.556 45.728,12.213 45.728,24.142C45.728,36.071 36.071,45.728 24.142,45.728C12.213,45.728 2.556,36.071 2.556,24.142C2.556,12.213 12.213,2.556 24.142,2.556ZM48,24.142C48,10.793 37.207,0 23.858,0C10.793,0 0,10.793 0,24.142C0,37.491 10.793,48.284 24.142,48.284C37.491,48 48,37.491 48,24.142Z"
+      android:fillType="evenOdd">
+    <aapt:attr name="android:fillColor">
+      <gradient 
+          android:startX="24.064"
+          android:startY="45.528"
+          android:endX="24.064"
+          android:endY="2.6"
+          android:type="linear">
+        <item android:offset="0" android:color="#FF3A587D"/>
+        <item android:offset="1" android:color="#FF87B5F5"/>
+      </gradient>
+    </aapt:attr>
+  </path>
+  <path
+      android:pathData="M45.444,24.142C45.444,12.213 35.787,2.556 23.858,2.556C11.929,2.556 2.272,12.213 2.272,24.142C2.272,36.071 11.929,45.728 23.858,45.728C35.787,45.444 45.444,35.787 45.444,24.142ZM24.142,5.112C34.651,5.112 42.888,13.633 42.888,23.858C42.888,34.083 34.367,42.604 24.142,42.604C13.633,42.604 5.396,34.083 5.396,23.858C5.396,13.633 13.633,5.112 24.142,5.112Z"
+      android:fillType="evenOdd">
+    <aapt:attr name="android:fillColor">
+      <gradient 
+          android:startX="24.064"
+          android:startY="45.528"
+          android:endX="24.064"
+          android:endY="2.6"
+          android:type="linear">
+        <item android:offset="0" android:color="#FF87B5F5"/>
+        <item android:offset="1" android:color="#FF3A587D"/>
+      </gradient>
+    </aapt:attr>
+  </path>
+  <path
+      android:pathData="M24.142,5.112C34.651,5.112 42.888,13.633 42.888,23.858C42.888,34.367 34.367,42.604 24.142,42.604C13.633,42.604 5.397,34.083 5.397,23.858C5.113,13.633 13.633,5.112 24.142,5.112Z"
+      android:fillType="evenOdd">
+    <aapt:attr name="android:fillColor">
+      <gradient 
+          android:startX="24.063"
+          android:startY="42.927"
+          android:endX="24.063"
+          android:endY="5.2"
+          android:type="linear">
+        <item android:offset="0" android:color="#FF00164F"/>
+        <item android:offset="0.025" android:color="#FF001752"/>
+        <item android:offset="0.456" android:color="#FF04257B"/>
+        <item android:offset="0.796" android:color="#FF062E95"/>
+        <item android:offset="1" android:color="#FF07319E"/>
+      </gradient>
+    </aapt:attr>
+  </path>
+  <path
+      android:pathData="M12.213,12.213C18.462,5.965 29.254,5.965 35.787,12.781C42.32,19.314 42.604,29.823 36.355,36.355C30.107,42.604 19.314,42.604 12.781,35.787C5.965,28.97 5.681,18.462 12.213,12.213Z"
+      android:fillColor="#1D71B8"
+      android:fillType="evenOdd"/>
+  <path
+      android:pathData="M24.142,7.669C33.231,7.669 40.615,15.053 40.615,24.142C40.615,33.231 33.231,40.615 24.142,40.615C15.053,40.615 7.669,33.231 7.669,24.142C7.669,15.053 15.053,7.669 24.142,7.669Z"
+      android:fillType="evenOdd">
+    <aapt:attr name="android:fillColor">
+      <gradient 
+          android:startX="24.064"
+          android:startY="40.57"
+          android:endX="24.064"
+          android:endY="7.558"
+          android:type="linear">
+        <item android:offset="0" android:color="#FF001E6B"/>
+        <item android:offset="1" android:color="#FF0056BF"/>
+      </gradient>
+    </aapt:attr>
+  </path>
+  <path
+      android:pathData="M19.117,25.426V22.105H22.271V18.883H25.729V22.105H28.883V25.426H25.729V28.648H22.271V25.426H19.117Z"
+      android:fillColor="#ffffff"/>
+</vector>
