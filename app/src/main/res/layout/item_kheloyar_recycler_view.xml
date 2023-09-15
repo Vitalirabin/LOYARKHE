@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/item_image_kheloyar"
+        android:scaleType="centerInside"
+        android:layout_width="@dimen/kheloyar_item_image_size"
+        android:layout_height="@dimen/kheloyar_item_image_size" />
+
+</FrameLayout>

@@ -10,7 +10,7 @@
     <string name="music_kheloyar">music</string>
     <string name="back_kheloyar">Back</string>
     <string name="spin_kheloyar">Spin</string>
-    <string name="minimun_biud_kheloyar">Minimum bid reached!</string>
+    <string name="minimun_bid_kheloyar">Minimum bid reached!</string>
     <string name="not_enought_coins_kheloyar">Not enought coins!</string>
     <string name="ran_out_of_coins_kheloyar">Ran out of coins!</string>
 </resources>

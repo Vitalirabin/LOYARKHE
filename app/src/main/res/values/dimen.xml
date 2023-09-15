@@ -7,26 +7,26 @@
     <dimen name="kheloyar_menu_option_margin_top">28dp</dimen>
     <dimen name="kheloyar_menu_exit_margin_top">38dp</dimen>
     <dimen name="kheloyar_menu_start_margin_top">64dp</dimen>
-    <dimen name="kheloyar_menu_margin_top">110dp</dimen>
+    <dimen name="kheloyar_menu_margin_top">48dp</dimen>
     <dimen name="kheloyar_cross_margin_top">40dp</dimen>
     <dimen name="kheloyar_cross_margin_end">24dp</dimen>
-    <dimen name="kheloyar_sound_margin_top">128dp</dimen>
+    <dimen name="kheloyar_sound_margin_top">32dp</dimen>
     <dimen name="kheloyar_options_buttons_size">61dp</dimen>
-    <dimen name="kheloyar_back_margin_top">120dp</dimen>
+    <dimen name="kheloyar_back_margin_top">32dp</dimen>
     <dimen name="kheloyar_music_margin_top">30dp</dimen>
     <dimen name="kheloyar_text_margin_top">20dp</dimen>
 
-    <dimen name="kheloyar_slot_recycler_container_margin_top">87dp</dimen>
     <dimen name="kheloyar_slot_recycler_margin_top">77dp</dimen>
     <dimen name="kheloyar_slot_recycler_margin_bottom">87dp</dimen>
-    <dimen name="kheloyar_slot_recycler_first_margin_start">74dp</dimen>
     <dimen name="kheloyar_slot_recycler_margin_start">5dp</dimen>
-    <dimen name="kheloyar_slot_recycler_width">84dp</dimen>
-    <dimen name="kheloyar_slot_recycler_third_margin_end">75dp</dimen>
+    <dimen name="kheloyar_slot_recycler_width">86dp</dimen>
+
     <dimen name="kheloyar_coins_margin_end">33dp</dimen>
     <dimen name="kheloyar_coins_margin_top">14dp</dimen>
 
     <dimen name="kheloyar_slot_text_margin_top">8dp</dimen>
     <dimen name="kheloyar_slot_text_margin_bottom">9dp</dimen>
     <dimen name="kheloyar_slot_text_margin_start">40dp</dimen>
+
+    <dimen name="kheloyar_item_image_size">90dp</dimen>
 </resources>

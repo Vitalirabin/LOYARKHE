@@ -33,13 +33,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+
         <LinearLayout
             android:id="@+id/slot_kheloyar_recycle_view_container"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/kheloyar_slot_recycler_container_margin_top"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="H,107:111"
             android:background="@drawable/recycle_back_kheloyr_slot_game"
+            android:gravity="center_horizontal"
             android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayoutkheloyar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/kheloyar_menu_slot_button">
@@ -47,40 +50,42 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/slot_kheloyar_recycle_view_first"
-                android:layout_width="@dimen/kheloyar_slot_recycler_width"
-                android:layout_height="match_parent"
-                android:layout_marginStart="@dimen/kheloyar_slot_recycler_first_margin_start"
-                android:layout_marginTop="@dimen/kheloyar_slot_recycler_margin_top"
-                android:layout_marginBottom="@dimen/kheloyar_slot_recycler_margin_bottom" />
+                style="@style/RecyclerKheloyarStyle"
+                android:layout_height="match_parent" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/slot_kheloyar_recycle_view_second"
-                android:layout_width="@dimen/kheloyar_slot_recycler_width"
-                android:layout_height="match_parent"
-                android:layout_marginStart="@dimen/kheloyar_slot_recycler_margin_start"
-                android:layout_marginTop="@dimen/kheloyar_slot_recycler_margin_top"
-                android:layout_marginBottom="@dimen/kheloyar_slot_recycler_margin_bottom" />
+                style="@style/RecyclerKheloyarStyle"
+                android:layout_height="match_parent" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/slot_kheloyar_recycle_view_third"
-                android:layout_width="@dimen/kheloyar_slot_recycler_width"
-                android:layout_height="match_parent"
-                android:layout_marginStart="@dimen/kheloyar_slot_recycler_margin_start"
-                android:layout_marginTop="@dimen/kheloyar_slot_recycler_margin_top"
-                android:layout_marginEnd="@dimen/kheloyar_slot_recycler_third_margin_end"
-                android:layout_marginBottom="@dimen/kheloyar_slot_recycler_margin_bottom" />
+                style="@style/RecyclerKheloyarStyle"
+                android:layout_height="match_parent" />
 
         </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/ramka_kheloyar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/recycler_win_rectangle_kheloyar"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/slot_kheloyar_recycle_view_container"
+            app:layout_constraintEnd_toEndOf="@+id/slot_kheloyar_recycle_view_container"
+            app:layout_constraintStart_toStartOf="@+id/slot_kheloyar_recycle_view_container"
+            app:layout_constraintTop_toTopOf="@+id/slot_kheloyar_recycle_view_container"
+            app:layout_constraintVertical_bias="0.45" />
 
         <LinearLayout
             android:id="@+id/linearLayoutkheloyar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/kheloyar_coins_margin_top"
-            android:layout_marginEnd="@dimen/kheloyar_coins_margin_end"
             android:background="@drawable/bet_background_kheloyar"
             android:gravity="start"
             android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/kheloyar_spin_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/linearLayout2kheloyar"
             app:layout_constraintTop_toBottomOf="@+id/slot_kheloyar_recycle_view_container">
@@ -105,7 +110,6 @@
             android:id="@+id/linearLayout2kheloyar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/kheloyar_coins_margin_end"
             android:background="@drawable/coins_container_background_kheloyar"
             android:gravity="start"
             android:orientation="horizontal"
@@ -137,8 +141,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/plus_button_kheloyar"
             app:layout_constraintStart_toEndOf="@+id/minus_button_kheloyar"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout2kheloyar"
-            app:layout_constraintVertical_bias="0.16666666667" />
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutkheloyar" />
 
         <ImageButton
             android:id="@+id/minus_button_kheloyar"
@@ -160,6 +163,35 @@
             app:layout_constraintTop_toTopOf="@+id/kheloyar_spin_button"
             app:srcCompat="@drawable/plus_icon_kheloyar_vector" />
 
+        <ImageView
+            android:id="@+id/win_bottom_animation_kheloyar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/win_bottom_image"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/win_central_animation_kheloyar" />
+
+        <FrameLayout
+            android:id="@+id/win_central_animation_kheloyar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/win_central_animation_view_kheloyar"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/slot_kheloyar_recycle_view_container"
+            app:layout_constraintEnd_toEndOf="@+id/slot_kheloyar_recycle_view_container"
+            app:layout_constraintStart_toStartOf="@+id/slot_kheloyar_recycle_view_container"
+            app:layout_constraintTop_toTopOf="@+id/slot_kheloyar_recycle_view_container">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|bottom"
+                android:layout_marginBottom="@dimen/kheloyar_back_margin_top"
+                android:src="@drawable/congratulations_image_kheloyar" />
+        </FrameLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

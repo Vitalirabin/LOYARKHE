@@ -14,7 +14,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="@drawable/kheloyar_menu_back"
-            android:gravity="top|center_horizontal"
+            android:gravity="center"
             android:orientation="vertical">
 
             <com.google.android.material.textview.MaterialTextView

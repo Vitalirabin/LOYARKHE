@@ -30,4 +30,12 @@
         <item name="android:textSize">@dimen/kheloyar_coins_text_size</item>
         <item name="android:layout_marginStart">@dimen/kheloyar_slot_text_margin_start</item>
     </style>
+
+    <style name="RecyclerKheloyarStyle">
+        <item name="android:layout_width">@dimen/kheloyar_slot_recycler_width</item>
+        <item name="android:layout_marginStart">@dimen/kheloyar_slot_recycler_margin_start</item>
+        <item name="android:layout_marginTop">@dimen/kheloyar_slot_recycler_margin_top</item>
+        <item name="android:layout_marginBottom">@dimen/kheloyar_slot_recycler_margin_bottom</item>
+        <item name="android:background">@color/kheloyar_recycler_background</item>
+    </style>
 </resources>

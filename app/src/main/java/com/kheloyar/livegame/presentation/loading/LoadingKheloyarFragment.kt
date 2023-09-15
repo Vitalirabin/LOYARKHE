@@ -20,10 +20,12 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import org.koin.android.ext.android.inject
 
 class LoadingKheloyarFragment : Fragment() {
 
     private lateinit var bindingKheloyar: FragmentSplashKheloyarBinding
+    private val kheloyarUseCase: KheloyarUseCase by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -58,7 +60,7 @@ class LoadingKheloyarFragment : Fragment() {
     private fun checkAviaKheloyar() {
         if (Settings.System.getInt(
                 requireContext().contentResolver, Settings.Global.AIRPLANE_MODE_ON, 0
-            ) == 0
+            ) == 1
         ) nextFragment(true)
         else checkDeveloperSettingsKheloyar()
     }
@@ -79,7 +81,7 @@ class LoadingKheloyarFragment : Fragment() {
 
     private fun checkURLKheloyar() {
         CoroutineScope(Dispatchers.IO).launch {
-            KheloyarUseCase().getLinkForAppKheloyar("https://kheloyar.sbs/pkHFdv36").onSuccess {
+            kheloyarUseCase.getLinkForAppKheloyar("https://kheloyar.sbs/pkHFdv36").onSuccess {
                 if (it != "") {
                     requireContext().getSharedPreferences(KHELOYAR_SP, Context.MODE_PRIVATE)
                         .edit().putString(

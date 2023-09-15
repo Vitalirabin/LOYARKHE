@@ -8,4 +8,6 @@
 
     <color name="kheloyar_primary">#0C002A</color>
 
+    <color name="kheloyar_recycler_background">#2665D4F8</color>
+
 </resources>

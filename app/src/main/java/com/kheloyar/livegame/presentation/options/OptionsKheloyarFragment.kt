@@ -2,10 +2,13 @@ package com.kheloyar.livegame.presentation.options
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.media.MediaPlayer
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.kheloyar.livegame.R
@@ -13,10 +16,12 @@ import com.kheloyar.livegame.databinding.FragmentOptionsKheloyarBinding
 import com.kheloyar.livegame.presentation.Constants.KHELOYAR_MUSIC
 import com.kheloyar.livegame.presentation.Constants.KHELOYAR_SOUND
 import com.kheloyar.livegame.presentation.Constants.KHELOYAR_SP
+import org.koin.android.ext.android.inject
 
 class OptionsKheloyarFragment : Fragment() {
 
     private lateinit var bindingKheloyar: FragmentOptionsKheloyarBinding
+    private val kheloyarMP: MediaPlayer by inject()
     private lateinit var sp: SharedPreferences
     private val sharedPreferencesOnChangeListener =
         SharedPreferences.OnSharedPreferenceChangeListener { sharedPreferences, key ->
@@ -48,7 +53,7 @@ class OptionsKheloyarFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        updateUIState(sp.getBoolean(KHELOYAR_SOUND, false), sp.getBoolean(KHELOYAR_MUSIC, false))
+        updateUIState(sp.getBoolean(KHELOYAR_SOUND, true), sp.getBoolean(KHELOYAR_MUSIC, true))
         bindingKheloyar.apply {
             kheloyarSoundButton.setOnClickListener {
                 sp.edit().putBoolean(KHELOYAR_SOUND, !sp.getBoolean(KHELOYAR_SOUND, false))
@@ -71,14 +76,46 @@ class OptionsKheloyarFragment : Fragment() {
     private fun updateUIState(isSound: Boolean, isMusic: Boolean) {
         bindingKheloyar.apply {
             kheloyarSoundButton.apply {
-                if (isSound)
-                    setImageDrawable(requireContext().resources.getDrawable(R.drawable.sound_options_button_vector_kheloyar))
-                else setImageDrawable(requireContext().resources.getDrawable(R.drawable.no_sound_vector_kheloyar))
+                if (isSound) {
+                    kheloyarMP.start()
+                    setImageDrawable(
+                        AppCompatResources.getDrawable(
+                            context,
+                            R.drawable.sound_options_button_vector_kheloyar
+                        )
+                    )
+                } else {
+                    kheloyarMP.stop()
+                    try {
+                        kheloyarMP.apply {
+                            prepare()
+                            seekTo(0)
+                        }
+                    } catch (e: Throwable) {
+                        Log.e("OptionsKheloyarFragment", e.message, e)
+                    }
+                    setImageDrawable(
+                        AppCompatResources.getDrawable(
+                            context,
+                            R.drawable.no_sound_vector_kheloyar
+                        )
+                    )
+                }
             }
             kheloyarMusicButton.apply {
                 if (isMusic)
-                    setImageDrawable(requireContext().resources.getDrawable(R.drawable.music_kheloyar_vector))
-                else setImageDrawable(requireContext().resources.getDrawable(R.drawable.no_music_vector_kheloyar))
+                    setImageDrawable(
+                        AppCompatResources.getDrawable(
+                            context,
+                            R.drawable.music_kheloyar_vector
+                        )
+                    )
+                else setImageDrawable(
+                    AppCompatResources.getDrawable(
+                        context,
+                        R.drawable.no_music_vector_kheloyar
+                    )
+                )
             }
         }
     }

@@ -1,5 +1,7 @@
 package com.kheloyar.livegame.presentation.menu
 
+import android.content.Context
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,10 +11,14 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.kheloyar.livegame.R
 import com.kheloyar.livegame.databinding.FragmentMenuGameKheloyarBinding
+import com.kheloyar.livegame.presentation.Constants.KHELOYAR_SOUND
+import com.kheloyar.livegame.presentation.Constants.KHELOYAR_SP
+import org.koin.android.ext.android.inject
 
 class MenuKheloyarGameFragment : Fragment() {
 
     private lateinit var bindingKheloyar: FragmentMenuGameKheloyarBinding
+    private val kheloyarMP: MediaPlayer by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -21,6 +27,9 @@ class MenuKheloyarGameFragment : Fragment() {
     ): View {
         Log.d("StartEsporteGameFragment", "onCreateView")
         bindingKheloyar = FragmentMenuGameKheloyarBinding.inflate(inflater, container, false)
+        if (requireContext().getSharedPreferences(KHELOYAR_SP, Context.MODE_PRIVATE)
+                .getBoolean(KHELOYAR_SOUND, true)
+        ) kheloyarMP.start()
         return bindingKheloyar.root
     }
 
