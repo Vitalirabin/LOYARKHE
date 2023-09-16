@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
@@ -32,31 +33,28 @@ class GameKheloyarFragment() : Fragment() {
     private lateinit var kheloyarMediaPlayer: MediaPlayer
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflaterKheloyar: LayoutInflater,
+        containerKheloyar: ViewGroup?,
+        savedInstanceStateKheloyar: Bundle?
     ): View {
-        bindingKheloyar = FragmentSlotKheloyarBinding.inflate(inflater, container, false)
+        bindingKheloyar =
+            FragmentSlotKheloyarBinding.inflate(inflaterKheloyar, containerKheloyar, false)
         kheloyarMediaPlayer = MediaPlayer.create(requireContext(), R.raw.win_music)
         return bindingKheloyar.root
     }
 
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onViewCreated(viewKheloyar: View, savedInstanceStateKheloyar: Bundle?) {
+        super.onViewCreated(viewKheloyar, savedInstanceStateKheloyar)
         setKheloyarClickListeners()
         setObserversKheloyar()
-        setAdaptersKheloyar()
-        setRecyclerViews()
-    }
-
-    private fun setAdaptersKheloyar() {
         firstAdapterKheloyar = AdapterKheloyatItem()
         secondAdapterKheloyar = AdapterKheloyatItem()
         thirdAdapterKheloyar = AdapterKheloyatItem()
+        setRecyclerViewsKheloyar()
     }
 
-    private fun setRecyclerViews() {
+    private fun setRecyclerViewsKheloyar() {
         bindingKheloyar.apply {
             slotKheloyarRecycleViewFirst.apply {
                 layoutManager =
@@ -66,7 +64,7 @@ class GameKheloyarFragment() : Fragment() {
                         orientation = LinearLayoutManager.VERTICAL
                     }
                 adapter = firstAdapterKheloyar
-                firstAdapterKheloyar?.setItemsKheloyar(viewModelKheloyar.getRandomListOfItems())
+                firstAdapterKheloyar?.setItemsKheloyar(viewModelKheloyar.getRandomListOfItemsKheloyar())
             }
             slotKheloyarRecycleViewSecond.apply {
                 layoutManager =
@@ -76,7 +74,7 @@ class GameKheloyarFragment() : Fragment() {
                         orientation = LinearLayoutManager.VERTICAL
                     }
                 adapter = secondAdapterKheloyar
-                secondAdapterKheloyar?.setItemsKheloyar(viewModelKheloyar.getRandomListOfItems())
+                secondAdapterKheloyar?.setItemsKheloyar(viewModelKheloyar.getRandomListOfItemsKheloyar())
             }
             slotKheloyarRecycleViewThird.apply {
                 layoutManager =
@@ -86,7 +84,7 @@ class GameKheloyarFragment() : Fragment() {
                         orientation = LinearLayoutManager.VERTICAL
                     }
                 adapter = thirdAdapterKheloyar
-                thirdAdapterKheloyar?.setItemsKheloyar(viewModelKheloyar.getRandomListOfItems())
+                thirdAdapterKheloyar?.setItemsKheloyar(viewModelKheloyar.getRandomListOfItemsKheloyar())
             }
         }
     }
@@ -94,10 +92,10 @@ class GameKheloyarFragment() : Fragment() {
     private fun setKheloyarClickListeners() {
         bindingKheloyar.apply {
             kheloyarCrossSlotButton.setOnClickListener {
-                findNavController().popBackStack()
+                requireView().findNavController().popBackStack()
             }
             kheloyarMenuSlotButton.setOnClickListener {
-                findNavController().popBackStack()
+                requireView().findNavController().popBackStack()
             }
             minusButtonKheloyar.setOnClickListener {
                 viewModelKheloyar.changeBetKheloyar(false, requireContext())
@@ -106,17 +104,17 @@ class GameKheloyarFragment() : Fragment() {
                 viewModelKheloyar.changeBetKheloyar(true, requireContext())
             }
             kheloyarSpinButton.setOnClickListener {
-                onClickSpin()
+                onClickSpinKheloyar()
             }
         }
     }
 
-    private fun onClickSpin() {
+    private fun onClickSpinKheloyar() {
         bindingKheloyar.apply {
             if (viewModelKheloyar.onClickSpinButtonKheloyar(requireContext())) {
-                firstAdapterKheloyar?.setItemsKheloyar(viewModelKheloyar.getRandomListOfItems())
-                secondAdapterKheloyar?.setItemsKheloyar(viewModelKheloyar.getRandomListOfItems())
-                thirdAdapterKheloyar?.setItemsKheloyar(viewModelKheloyar.getRandomListOfItems())
+                firstAdapterKheloyar?.setItemsKheloyar(viewModelKheloyar.getRandomListOfItemsKheloyar())
+                secondAdapterKheloyar?.setItemsKheloyar(viewModelKheloyar.getRandomListOfItemsKheloyar())
+                thirdAdapterKheloyar?.setItemsKheloyar(viewModelKheloyar.getRandomListOfItemsKheloyar())
                 slotKheloyarRecycleViewFirst.scrollToPosition(0)
                 slotKheloyarRecycleViewSecond.scrollToPosition(0)
                 slotKheloyarRecycleViewThird.scrollToPosition(0)
@@ -129,7 +127,7 @@ class GameKheloyarFragment() : Fragment() {
                 slotKheloyarRecycleViewThird.smoothScrollToPosition(
                     thirdAdapterKheloyar?.itemCount ?: 0
                 )
-                viewModelKheloyar.checkWin(
+                viewModelKheloyar.checkWinKheloyar(
                     firstAdapterKheloyar?.getPreLustItem() ?: 1,
                     secondAdapterKheloyar?.getPreLustItem() ?: 2,
                     thirdAdapterKheloyar?.getPreLustItem() ?: 3
@@ -152,7 +150,7 @@ class GameKheloyarFragment() : Fragment() {
                 if (it != "")
                     Snackbar.make(bindingKheloyar.root, it, Snackbar.LENGTH_SHORT).show()
             }
-            showWinAnimations.observe(viewLifecycleOwner) {
+            showWinAnimationsKheloyar.observe(viewLifecycleOwner) {
                 if (it) {
                     val animation =
                         AnimationUtils.loadAnimation(context, R.anim.win_animations_kheloyar)
@@ -175,7 +173,11 @@ class GameKheloyarFragment() : Fragment() {
                             }
                         }
                         delay(DELAY_WIN_SPIN)
-                        viewModelKheloyar.setWinFalse()
+                        viewModelKheloyar.setWinFalseKheloyar(
+                            winKheloyar = true,
+                            elseKheloyar = true,
+                            loseKheloyar = true
+                        )
                     }
                 } else {
                     bindingKheloyar.winCentralAnimationKheloyar.apply {

@@ -10,7 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
+import androidx.navigation.findNavController
 import com.kheloyar.livegame.R
 import com.kheloyar.livegame.databinding.FragmentOptionsKheloyarBinding
 import com.kheloyar.livegame.presentation.Constants.KHELOYAR_MUSIC
@@ -22,61 +22,71 @@ class OptionsKheloyarFragment : Fragment() {
 
     private lateinit var bindingKheloyar: FragmentOptionsKheloyarBinding
     private val kheloyarMP: MediaPlayer by inject()
-    private lateinit var sp: SharedPreferences
-    private val sharedPreferencesOnChangeListener =
-        SharedPreferences.OnSharedPreferenceChangeListener { sharedPreferences, key ->
-            when (key) {
+    private lateinit var spKheloyar: SharedPreferences
+    private var sharedPreferencesOnChangeListenerKheloyar: SharedPreferences.OnSharedPreferenceChangeListener? =
+        SharedPreferences.OnSharedPreferenceChangeListener { sharedPreferencesKheloyar, keyKheloyar ->
+            when (keyKheloyar) {
                 KHELOYAR_SOUND -> {
                     updateUIState(
-                        sharedPreferences.getBoolean(KHELOYAR_SOUND, false),
-                        sharedPreferences.getBoolean(KHELOYAR_MUSIC, false)
+                        sharedPreferencesKheloyar.getBoolean(KHELOYAR_SOUND, false),
+                        sharedPreferencesKheloyar.getBoolean(KHELOYAR_MUSIC, false)
                     )
                 }
 
                 KHELOYAR_MUSIC -> {
                     updateUIState(
-                        sharedPreferences.getBoolean(KHELOYAR_SOUND, false),
-                        sharedPreferences.getBoolean(KHELOYAR_MUSIC, false)
+                        sharedPreferencesKheloyar.getBoolean(KHELOYAR_SOUND, false),
+                        sharedPreferencesKheloyar.getBoolean(KHELOYAR_MUSIC, false)
                     )
                 }
             }
         }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+        inflaterKheloyar: LayoutInflater,
+        containerKheloyar: ViewGroup?,
+        savedInstanceStateKheloyar: Bundle?
     ): View {
-        bindingKheloyar = FragmentOptionsKheloyarBinding.inflate(inflater, container, false)
-        sp = requireContext().getSharedPreferences(KHELOYAR_SP, Context.MODE_PRIVATE)
-        sp.registerOnSharedPreferenceChangeListener(sharedPreferencesOnChangeListener)
+        bindingKheloyar =
+            FragmentOptionsKheloyarBinding.inflate(inflaterKheloyar, containerKheloyar, false)
+        spKheloyar = requireContext().getSharedPreferences(KHELOYAR_SP, Context.MODE_PRIVATE)
+        spKheloyar.registerOnSharedPreferenceChangeListener(
+            sharedPreferencesOnChangeListenerKheloyar
+        )
         return bindingKheloyar.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        updateUIState(sp.getBoolean(KHELOYAR_SOUND, true), sp.getBoolean(KHELOYAR_MUSIC, true))
+    override fun onViewCreated(viewKheloyar: View, savedInstanceStateKheloyar: Bundle?) {
+        super.onViewCreated(viewKheloyar, savedInstanceStateKheloyar)
+        updateUIState(
+            spKheloyar.getBoolean(KHELOYAR_SOUND, true),
+            spKheloyar.getBoolean(KHELOYAR_MUSIC, true)
+        )
         bindingKheloyar.apply {
             kheloyarSoundButton.setOnClickListener {
-                sp.edit().putBoolean(KHELOYAR_SOUND, !sp.getBoolean(KHELOYAR_SOUND, false))
+                spKheloyar.edit()
+                    .putBoolean(KHELOYAR_SOUND, !spKheloyar.getBoolean(KHELOYAR_SOUND, false))
                     .apply()
             }
 
             kheloyarMusicButton.setOnClickListener {
-                sp.edit().putBoolean(KHELOYAR_MUSIC, !sp.getBoolean(KHELOYAR_MUSIC, false))
+                spKheloyar.edit()
+                    .putBoolean(KHELOYAR_MUSIC, !spKheloyar.getBoolean(KHELOYAR_MUSIC, false))
                     .apply()
             }
             kheloyarCrossButton.setOnClickListener {
-                findNavController().popBackStack()
+                requireView().findNavController().popBackStack()
             }
             kheloyarBackButton.setOnClickListener {
-                findNavController().popBackStack()
+                requireView().findNavController().popBackStack()
             }
         }
     }
 
-    private fun updateUIState(isSound: Boolean, isMusic: Boolean) {
+    private fun updateUIState(isSoundKheloyar: Boolean, isMusicKheloyar: Boolean) {
         bindingKheloyar.apply {
             kheloyarSoundButton.apply {
-                if (isSound) {
+                if (isSoundKheloyar) {
                     kheloyarMP.start()
                     setImageDrawable(
                         AppCompatResources.getDrawable(
@@ -103,7 +113,7 @@ class OptionsKheloyarFragment : Fragment() {
                 }
             }
             kheloyarMusicButton.apply {
-                if (isMusic)
+                if (isMusicKheloyar)
                     setImageDrawable(
                         AppCompatResources.getDrawable(
                             context,
@@ -122,6 +132,13 @@ class OptionsKheloyarFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        sp.unregisterOnSharedPreferenceChangeListener(sharedPreferencesOnChangeListener)
+        if (spKheloyar.all.isNotEmpty())
+            spKheloyar.unregisterOnSharedPreferenceChangeListener(
+                sharedPreferencesOnChangeListenerKheloyar
+            )
+        sharedPreferencesOnChangeListenerKheloyar =
+            if (sharedPreferencesOnChangeListenerKheloyar != null)
+                null
+            else SharedPreferences.OnSharedPreferenceChangeListener { sharedPreferencesKheloyar, keyKheloyar -> }
     }
 }

@@ -12,37 +12,37 @@ class AdapterKheloyatItem : RecyclerView.Adapter<AdapterKheloyatItem.AdapterKhel
 
     class AdapterKheloyarViewHolder(private val kheloyarBinding: ItemKheloyarRecyclerViewBinding) :
         RecyclerView.ViewHolder(kheloyarBinding.root) {
-        fun bind(item: Int) {
+        fun kheloyarBind(itemKheloyar: Int) {
             kheloyarBinding.itemImageKheloyar.setImageDrawable(
                 AppCompatResources.getDrawable(
                     kheloyarBinding.itemImageKheloyar.context,
-                    item
+                    itemKheloyar
                 )
             )
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdapterKheloyarViewHolder {
+    override fun onCreateViewHolder(parentKheloyar: ViewGroup, viewTypeKheloyar: Int): AdapterKheloyarViewHolder {
         return AdapterKheloyarViewHolder(
             ItemKheloyarRecyclerViewBinding.inflate(
                 LayoutInflater.from(
-                    parent.context
-                ), parent, false
+                    parentKheloyar.context
+                ), parentKheloyar, false
             )
         )
     }
 
     override fun getItemCount(): Int = kheloyarList.size
 
-    override fun getItemViewType(position: Int): Int = position
+    override fun getItemViewType(positionKheloyar: Int): Int = positionKheloyar
 
-    override fun getItemId(position: Int): Long = position.toLong()
-    override fun onBindViewHolder(holder: AdapterKheloyarViewHolder, position: Int) {
-        holder.bind(kheloyarList[position])
+    override fun getItemId(positionKheloyar: Int): Long = positionKheloyar.toLong()
+    override fun onBindViewHolder(holderKheloyar: AdapterKheloyarViewHolder, positionKheloyar: Int) {
+        holderKheloyar.kheloyarBind(kheloyarList[positionKheloyar])
     }
 
-    fun setItemsKheloyar(list: List<Int>) {
-        kheloyarList = list
+    fun setItemsKheloyar(listKheloyar: List<Int>) {
+        kheloyarList = listKheloyar
         notifyDataSetChanged()
     }
 

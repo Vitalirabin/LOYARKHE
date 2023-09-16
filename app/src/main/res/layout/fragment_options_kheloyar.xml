@@ -18,7 +18,7 @@
             android:orientation="vertical">
 
             <com.google.android.material.textview.MaterialTextView
-                style="@style/FontGravityTextStyle"
+                style="@style/FontGravityTextStyleKheloyar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/kheloyar_menu_margin_top"
@@ -36,7 +36,7 @@
                 android:src="@drawable/sound_options_button_vector_kheloyar" />
 
             <com.google.android.material.textview.MaterialTextView
-                style="@style/FontGravityTextStyle"
+                style="@style/FontGravityTextStyleKheloyar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/kheloyar_text_margin_top"
@@ -54,7 +54,7 @@
                 android:src="@drawable/music_kheloyar_vector" />
 
             <com.google.android.material.textview.MaterialTextView
-                style="@style/FontGravityTextStyle"
+                style="@style/FontGravityTextStyleKheloyar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/kheloyar_text_margin_top"
@@ -65,7 +65,7 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/kheloyar_back_button"
-                style="@style/BackSpinButtonsStyle"
+                style="@style/BackSpinButtonsStyleKheloyar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/kheloyar_back_margin_top"

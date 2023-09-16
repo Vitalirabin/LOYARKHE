@@ -8,12 +8,12 @@ import java.lang.reflect.Type
 
 class KheloyarNullOnEmptyConverterFactory : Converter.Factory() {
     override fun responseBodyConverter(
-        type: Type,
-        annotations: Array<Annotation>,
-        retrofit: Retrofit
+        typeKheloyar: Type,
+        annotationsKheloyar: Array<Annotation>,
+        retrofitKheloyar: Retrofit
     ): Converter<ResponseBody, *> {
         val delegate: Converter<ResponseBody, *> =
-            retrofit.nextResponseBodyConverter<Any>(this, type, annotations)
+            retrofitKheloyar.nextResponseBodyConverter<Any>(this, typeKheloyar, annotationsKheloyar)
         return Converter { body -> if (body.contentLength() == 0L) "empty body" else delegate.convert(body) }
     }
 }

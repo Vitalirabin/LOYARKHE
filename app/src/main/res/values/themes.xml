@@ -8,30 +8,30 @@
 
     <style name="Theme.KHELOYAR" parent="Base.Theme.KHELOYAR" />
 
-    <style name="FontGravityTextStyle" parent="ThemeOverlay.Material3.AutoCompleteTextView">
+    <style name="FontGravityTextStyleKheloyar" parent="ThemeOverlay.Material3.AutoCompleteTextView">
         <item name="android:fontFamily">@font/bevan</item>
         <item name="android:gravity">center</item>
     </style>
 
-    <style name="MenuItemTextStyle" parent="FontGravityTextStyle">
+    <style name="MenuItemTextStyleKheloyar" parent="FontGravityTextStyleKheloyar">
         <item name="android:textSize">@dimen/kheloyar_menu_text_size</item>
         <item name="textAllCaps">true</item>
     </style>
 
-    <style name="BackSpinButtonsStyle" parent="MenuItemTextStyle">
+    <style name="BackSpinButtonsStyleKheloyar" parent="MenuItemTextStyleKheloyar">
         <item name="android:textSize">@dimen/kheloyar_menu_text_size</item>
         <item name="android:textAllCaps">true</item>
         <item name="android:textColor">@color/white_kheloyar</item>
         <item name="android:background">@drawable/kheloyar_menu_button_background</item>
     </style>
 
-    <style name="SlotTextStyle" parent="FontGravityTextStyle">
+    <style name="SlotTextStyleKheloyar" parent="FontGravityTextStyleKheloyar">
         <item name="android:textColor">@color/white_kheloyar</item>
         <item name="android:textSize">@dimen/kheloyar_coins_text_size</item>
         <item name="android:layout_marginStart">@dimen/kheloyar_slot_text_margin_start</item>
     </style>
 
-    <style name="RecyclerKheloyarStyle">
+    <style name="RecyclerKheloyarStyleKheloyar">
         <item name="android:layout_width">@dimen/kheloyar_slot_recycler_width</item>
         <item name="android:layout_marginStart">@dimen/kheloyar_slot_recycler_margin_start</item>
         <item name="android:layout_marginTop">@dimen/kheloyar_slot_recycler_margin_top</item>

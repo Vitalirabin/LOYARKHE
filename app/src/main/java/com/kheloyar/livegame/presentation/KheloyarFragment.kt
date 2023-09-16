@@ -35,14 +35,14 @@ class KheloyarFragment : Fragment() {
     private var uploadMessageKheloyar: ValueCallback<Array<Uri>>? = null
 
     var startActivityForResultKheloyar =
-        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            uploadMessageKheloyar = if (result.resultCode == AppCompatActivity.RESULT_OK) {
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { resultKheloyar ->
+            uploadMessageKheloyar = if (resultKheloyar.resultCode == AppCompatActivity.RESULT_OK) {
                 if (uploadMessageKheloyar == null)
                     return@registerForActivityResult
                 uploadMessageKheloyar?.onReceiveValue(
                     WebChromeClient.FileChooserParams.parseResult(
-                        result.resultCode,
-                        result.data
+                        resultKheloyar.resultCode,
+                        resultKheloyar.data
                     )
                 )
                 null
@@ -53,12 +53,12 @@ class KheloyarFragment : Fragment() {
         }
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflaterKheloyar: LayoutInflater,
+        containerKheloyar: ViewGroup?,
+        savedInstanceStateKheloyar: Bundle?
     ): View {
         bindingKheloyar =
-            FragmentKheloyarBinding.inflate(layoutInflater, container, false)
+            FragmentKheloyarBinding.inflate(layoutInflater, containerKheloyar, false)
         configKheloyar(true)
         val sp = requireActivity().getSharedPreferences(KHELOYAR_SP, Context.MODE_PRIVATE)
         bindingKheloyar.webViewKheloyar.loadUrl(
@@ -76,8 +76,8 @@ class KheloyarFragment : Fragment() {
     }
 
 
-    private fun configKheloyar(enable: Boolean) {
-        if (enable) {
+    private fun configKheloyar(enableKheloyar: Boolean) {
+        if (enableKheloyar) {
             bindingKheloyar.webViewKheloyar.settings.apply {
                 builtInZoomControls = true
                 setSupportZoom(true)
@@ -132,15 +132,15 @@ class KheloyarFragment : Fragment() {
     private fun getKheloyarChromeClient(): KheloyarChromeClient = object : KheloyarChromeClient() {
         override fun onShowFileChooser(
             webViewKheloyar: WebView?,
-            filePathCallback: ValueCallback<Array<Uri>>?,
-            fileChooserParams: FileChooserParams?
+            filePathCallbackKheloyar: ValueCallback<Array<Uri>>?,
+            fileChooserParamsKheloyar: FileChooserParams?
         ): Boolean {
             if (uploadMessageKheloyar != null) {
                 uploadMessageKheloyar!!.onReceiveValue(null)
                 uploadMessageKheloyar = null
             }
-            uploadMessageKheloyar = filePathCallback
-            val intent = fileChooserParams?.createIntent()
+            uploadMessageKheloyar = filePathCallbackKheloyar
+            val intent = fileChooserParamsKheloyar?.createIntent()
             try {
                 startActivityForResultKheloyar.launch(intent)
             } catch (e: ActivityNotFoundException) {
@@ -150,10 +150,10 @@ class KheloyarFragment : Fragment() {
             return true
         }
 
-        override fun onConsoleMessage(message: ConsoleMessage): Boolean {
+        override fun onConsoleMessage(messageKheloyar: ConsoleMessage): Boolean {
             Log.d(
-                "WebView", "${message.message()} -- From line " +
-                        "${message.lineNumber()} of ${message.sourceId()}"
+                "WebView", "${messageKheloyar.message()} -- From line " +
+                        "${messageKheloyar.lineNumber()} of ${messageKheloyar.sourceId()}"
             )
             return true
         }
@@ -162,10 +162,10 @@ class KheloyarFragment : Fragment() {
     private fun getKheloyarWebClient(): WebViewClient = object : KheloyarWebClient() {
         @RequiresApi(Build.VERSION_CODES.O)
         override fun onRenderProcessGone(
-            view: WebView,
-            detail: RenderProcessGoneDetail
+            viewKheloyar: WebView,
+            detailKheloyar: RenderProcessGoneDetail
         ): Boolean {
-            if (!detail.didCrash()) {
+            if (!detailKheloyar.didCrash()) {
                 bindingKheloyar.webViewKheloyar.also { webViewKheloyar ->
                     val webViewKheloyarContainer: ViewGroup = bindingKheloyar.root
                     webViewKheloyarContainer.removeView(webViewKheloyar)
@@ -174,8 +174,6 @@ class KheloyarFragment : Fragment() {
                 }
                 return true
             }
-
-            Log.e("MY_APP_TAG", "The WebView rendering process crashed!")
             return false
         }
     }

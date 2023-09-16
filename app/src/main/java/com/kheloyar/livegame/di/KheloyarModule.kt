@@ -19,17 +19,17 @@ import retrofit2.converter.gson.GsonConverterFactory
 val kheloyarModule = module {
 
     single {
-        val interseptor = HttpLoggingInterceptor()
-        interseptor.level = HttpLoggingInterceptor.Level.BODY
-        OkHttpClient.Builder().addInterceptor(interseptor).build()
+        val interseptorKheloyar = HttpLoggingInterceptor()
+        interseptorKheloyar.level = HttpLoggingInterceptor.Level.BODY
+        OkHttpClient.Builder().addInterceptor(interseptorKheloyar).build()
     }
 
     single {
-        val gson = GsonBuilder().setLenient().create()
+        val gsonKheloyar = GsonBuilder().setLenient().create()
         Retrofit.Builder()
             .baseUrl("https://site.com")
             .addConverterFactory(KheloyarNullOnEmptyConverterFactory())
-            .addConverterFactory(GsonConverterFactory.create(gson))
+            .addConverterFactory(GsonConverterFactory.create(gsonKheloyar))
             .client(get())
             .build()
     }

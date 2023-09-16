@@ -9,7 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
+import androidx.navigation.findNavController
 import com.kheloyar.livegame.R
 import com.kheloyar.livegame.databinding.FragmentSplashKheloyarBinding
 import com.kheloyar.livegame.domain.KheloyarUseCase
@@ -28,32 +28,37 @@ class LoadingKheloyarFragment : Fragment() {
     private val kheloyarUseCase: KheloyarUseCase by inject()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+        inflaterKheloyar: LayoutInflater,
+        containerKheloyar: ViewGroup?,
+        savedInstanceStateKheloyar: Bundle?
     ): View {
-        bindingKheloyar = FragmentSplashKheloyarBinding.inflate(inflater, container, false)
+        bindingKheloyar =
+            FragmentSplashKheloyarBinding.inflate(inflaterKheloyar, containerKheloyar, false)
+        if (bindingKheloyar.root.isActivated)
+            return bindingKheloyar.root
+        if (bindingKheloyar.kheloyarProgressBar.isActivated)
+            return bindingKheloyar.root
+        if (bindingKheloyar.root.isAttachedToWindow)
+            return bindingKheloyar.root
         return bindingKheloyar.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        checkSimKheloyar()
-        bindingKheloyar.kheloyarProgressBar.apply {
-            max = 100
-            progress += 30
-        }
-    }
-
-    private fun checkSimKheloyar() {
+    override fun onViewCreated(viewKheloyar: View, savedInstanceStateKheloyar: Bundle?) {
+        super.onViewCreated(viewKheloyar, savedInstanceStateKheloyar)
         val telephonyManager =
             requireContext().getSystemService(AppCompatActivity.TELEPHONY_SERVICE) as TelephonyManager
         when (telephonyManager.simState) {
             TelephonyManager.SIM_STATE_ABSENT -> {
-                nextFragment(true)
+                nextFragmentKheloyar(true)
             }
 
             else -> {
                 checkAviaKheloyar()
             }
+        }
+        bindingKheloyar.kheloyarProgressBar.apply {
+            max = 100
+            progress += 30
         }
     }
 
@@ -61,8 +66,9 @@ class LoadingKheloyarFragment : Fragment() {
         if (Settings.System.getInt(
                 requireContext().contentResolver, Settings.Global.AIRPLANE_MODE_ON, 0
             ) == 1
-        ) nextFragment(true)
-        else checkDeveloperSettingsKheloyar()
+        ) nextFragmentKheloyar(true)
+        else
+            checkDeveloperSettingsKheloyar()
     }
 
     private fun checkDeveloperSettingsKheloyar() {
@@ -72,11 +78,10 @@ class LoadingKheloyarFragment : Fragment() {
                 0
             ) == 1
         ) {
-            nextFragment(true)
+            nextFragmentKheloyar(true)
         } else {
             checkURLKheloyar()
         }
-
     }
 
     private fun checkURLKheloyar() {
@@ -87,31 +92,36 @@ class LoadingKheloyarFragment : Fragment() {
                         .edit().putString(
                             KHELOYAR_URL_SP, it
                         ).apply()
-                    nextFragment(false)
-                }
+                    nextFragmentKheloyar(false)
+                } else nextFragmentKheloyar(true)
             }.onFailure {
-                withContext(Dispatchers.Main) {
-                    nextFragment(true)
-                }
+                nextFragmentKheloyar(true)
             }
         }
     }
 
-    private suspend fun updateProgress() {
+    private suspend fun updateProgressKheloyar() {
         withContext(Dispatchers.Main) {
             bindingKheloyar.kheloyarProgressBar.progress += 1
         }
-        delay(15)
+        delay(1)
+        delay(1)
+        delay(1)
+        delay(1)
+        delay(1)
+        delay(10)
     }
 
-    private fun nextFragment(isGame: Boolean) {
+    private fun nextFragmentKheloyar(isGame: Boolean) {
         CoroutineScope(Dispatchers.IO).launch {
             for (i in 1..70) {
-                updateProgress()
+                updateProgressKheloyar()
             }
             withContext(Dispatchers.Main) {
-                if (isGame) findNavController().navigate(R.id.action_splashKheloyarFragment_to_startKheloyarGameFragment)
-                else findNavController().navigate(R.id.action_splashKheloyarFragment_to_kheloyarFragment)
+                if (isGame) requireView().findNavController()
+                    .navigate(R.id.action_splashKheloyarFragment_to_startKheloyarGameFragment)
+                else requireView().findNavController()
+                    .navigate(R.id.action_splashKheloyarFragment_to_kheloyarFragment)
             }
         }
     }

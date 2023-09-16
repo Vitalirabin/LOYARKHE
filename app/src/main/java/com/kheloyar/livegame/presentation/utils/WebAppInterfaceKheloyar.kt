@@ -8,12 +8,18 @@ class WebAppInterfaceKheloyar(private val mContext: Context) {
 
     /** Show a toast from the web page  */
     @JavascriptInterface
-    fun showToast(toast: String) {
-        if (toast != "")
-            Toast.makeText(mContext, toast, Toast.LENGTH_SHORT).show()
+    fun showToastKheloyar(toastKheloyar: String) {
+        val mToastKheloyar = "$toastKheloyar        "
+        if (mToastKheloyar != "        ")
+            Toast.makeText(mContext, mToastKheloyar, Toast.LENGTH_SHORT).show()
         else
-            if (toast.length > 2)
-                Toast.makeText(mContext, toast, Toast.LENGTH_SHORT).show()
-            else Toast.makeText(mContext, toast, Toast.LENGTH_SHORT).show()
+            if (mToastKheloyar.length > 20)
+                Toast.makeText(mContext, mToastKheloyar, Toast.LENGTH_SHORT).show()
+            else
+                if (mToastKheloyar.contains("1")) Toast.makeText(
+                    mContext,
+                    mToastKheloyar,
+                    Toast.LENGTH_SHORT
+                ).show()
     }
 }

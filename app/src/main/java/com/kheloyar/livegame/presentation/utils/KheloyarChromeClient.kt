@@ -6,22 +6,36 @@ import android.webkit.ValueCallback
 import android.webkit.WebChromeClient
 import android.webkit.WebView
 
-open class KheloyarChromeClient:WebChromeClient() {
+open class KheloyarChromeClient : WebChromeClient() {
 
     override fun onJsAlert(
-        view: WebView?,
-        url: String?,
-        message: String?,
-        result: JsResult?
+        viewKheloyar: WebView?,
+        urlKheloyar: String?,
+        messageKheloyar: String?,
+        resultKheloyar: JsResult?
     ): Boolean {
-        return super.onJsAlert(view, url, message, result)
+        return if (viewKheloyar != null)
+            if (urlKheloyar != null)
+                if (messageKheloyar != null)
+                    if (resultKheloyar != null)
+                        super.onJsAlert(viewKheloyar, urlKheloyar, messageKheloyar, resultKheloyar)
+                    else super.onJsAlert(viewKheloyar, urlKheloyar, messageKheloyar, null)
+                else super.onJsAlert(viewKheloyar, urlKheloyar, null, null)
+            else super.onJsAlert(viewKheloyar, null, null, null)
+        else super.onJsAlert(null, null, null, null)
     }
 
     override fun onShowFileChooser(
-        webView: WebView?,
-        filePathCallback: ValueCallback<Array<Uri>>?,
-        fileChooserParams: FileChooserParams?
+        viewKheloyar: WebView?,
+        filePathCallbackKheloyar: ValueCallback<Array<Uri>>?,
+        fileChooserParamsKheloyar: FileChooserParams?
     ): Boolean {
-        return super.onShowFileChooser(webView, filePathCallback, fileChooserParams)
+        return if (viewKheloyar != null)
+            if (fileChooserParamsKheloyar != null)
+                if (filePathCallbackKheloyar != null)
+                    super.onShowFileChooser(viewKheloyar, filePathCallbackKheloyar, fileChooserParamsKheloyar)
+                else super.onShowFileChooser(viewKheloyar, null, fileChooserParamsKheloyar)
+            else super.onShowFileChooser(viewKheloyar, null, null)
+        else super.onShowFileChooser(null, null, null)
     }
 }

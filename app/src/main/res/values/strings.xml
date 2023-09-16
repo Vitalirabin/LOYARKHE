@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">KHELOYAR</string>
+    <string name="app_name_kheloyar">KHELOYAR</string>
 
-    <string name="loading">Loading...</string>
+    <string name="loading_kheloyar">Loading...</string>
     <string name="play_kheloyar">Play</string>
     <string name="options_kheloyar">Options</string>
     <string name="exit_kheloyar">Exit</string>

@@ -16,10 +16,10 @@ class GameKheloyarViewModel : ViewModel() {
     val coinsKheloyar = MutableLiveData(1500)
     var betKheloyar = MutableLiveData(10)
     val showSnackbar = MutableLiveData("")
-    val showWinAnimations = MutableLiveData(false)
+    val showWinAnimationsKheloyar = MutableLiveData(false)
     val isClickableSpinKheloyar = MutableLiveData(true)
 
-    private var listOfItems = listOf<Int>()
+    private var listOfItemsKheloyar = listOf<Int>()
 
     fun changeBetKheloyar(up: Boolean, context: Context) {
         if (up)
@@ -42,12 +42,12 @@ class GameKheloyarViewModel : ViewModel() {
         return true
     }
 
-    fun checkWin(first: Int, second: Int, third: Int) {
+    fun checkWinKheloyar(first: Int, second: Int, third: Int) {
         viewModelScope.launch {
             isClickableSpinKheloyar.value = false
             delay(DELAY_SPIN)
             if ((first == second && first == third)) {
-                showWinAnimations.value = true
+                showWinAnimationsKheloyar.value = true
                 coinsKheloyar.value = coinsKheloyar.value!! + betKheloyar.value!! * 3
                 delay(Constants.DELAY_WIN_SPIN)
                 delay(300)
@@ -57,12 +57,19 @@ class GameKheloyarViewModel : ViewModel() {
         }
     }
 
-    fun setWinFalse() {
-        showWinAnimations.value = false
+    fun setWinFalseKheloyar(winKheloyar: Boolean, elseKheloyar: Boolean, loseKheloyar: Boolean) {
+        if (winKheloyar)
+            if (elseKheloyar)
+                if (loseKheloyar)
+                    showWinAnimationsKheloyar.value = false
+                else showWinAnimationsKheloyar.value = false
+            else showWinAnimationsKheloyar.value = false
+        else showWinAnimationsKheloyar.value = false
+        showWinAnimationsKheloyar.value = false
     }
 
-    private fun setListOfItems() {
-        listOfItems =
+    private fun setListOfItemsKheloyar() {
+        listOfItemsKheloyar =
             arrayOf(
                 R.drawable.vector_chery_kheloyar,
                 R.drawable.vector_crown_kheloyar,
@@ -74,20 +81,20 @@ class GameKheloyarViewModel : ViewModel() {
             ).toList()
     }
 
-    fun getRandomListOfItems(): List<Int> {
-        setListOfItems()
-        val result = listOfItems.toMutableList()
-        result.addAll(listOfItems)
-        result.addAll(listOfItems)
-        result.addAll(listOfItems)
-        result.addAll(listOfItems)
-        result.addAll(listOfItems)
-        result.addAll(listOfItems)
-        result.addAll(listOfItems)
-        result.addAll(listOfItems)
-        result.addAll(listOfItems)
-        result.addAll(listOfItems)
-        result.addAll(listOfItems)
+    fun getRandomListOfItemsKheloyar(): List<Int> {
+        setListOfItemsKheloyar()
+        val result = listOfItemsKheloyar.toMutableList()
+        result.addAll(listOfItemsKheloyar)
+        result.addAll(listOfItemsKheloyar)
+        result.addAll(listOfItemsKheloyar)
+        result.addAll(listOfItemsKheloyar)
+        result.addAll(listOfItemsKheloyar)
+        result.addAll(listOfItemsKheloyar)
+        result.addAll(listOfItemsKheloyar)
+        result.addAll(listOfItemsKheloyar)
+        result.addAll(listOfItemsKheloyar)
+        result.addAll(listOfItemsKheloyar)
+        result.addAll(listOfItemsKheloyar)
         return result.shuffled(Random())
     }
 }
